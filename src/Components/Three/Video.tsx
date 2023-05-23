@@ -1,8 +1,6 @@
 import * as THREE from 'three'
 import { useEffect, useState } from "react";
 import { Interactive } from '@react-three/xr';
-import visor from "../../static/visor/visor.png"
-import visorAlpha from "../../static/visor/visor-alpha.png"
 import visorAlphaInverse from "../../static/visor/visor-alpha-inverse.png"
 import { useLoader } from '@react-three/fiber';
 import { TextureLoader } from 'three';
@@ -23,9 +21,7 @@ const Video: React.FC<{
         const [video, setVideo] = useState<HTMLVideoElement|undefined>(undefined)        
 
         const [playing, setPlaying] = useState(false) 
-        
-        const visorTexture = useLoader(TextureLoader, visor)
-        const visorTextureAlpha = useLoader(TextureLoader, visorAlpha)
+    
         const visorTextureAlphaInverse = useLoader(TextureLoader, visorAlphaInverse)
 
         useEffect(() => {
