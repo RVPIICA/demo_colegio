@@ -6,7 +6,6 @@ import PNGMoveInteractive from '../Components/Three/PNGMoveInteractive'
 //Videos
 import casa_tipica from "../static/videos/casa_tipica.mp4";
 import { IModalData } from '../util/interfaces'
-import PNGVideoInteractive from '../Components/Three/PNGVideoInteractive'
 import PNGVRVideoInteractive from '../Components/Three/PNGVRVideoInteractive'
 
 export const CasaInterior:React.FC<{ onClick: (value:string)=>void }> = ({ onClick }) => {
