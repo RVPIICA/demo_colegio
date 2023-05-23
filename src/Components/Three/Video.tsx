@@ -4,18 +4,21 @@ import { Interactive } from '@react-three/xr';
 import visorAlphaInverse from "../../static/visor/visor-alpha-inverse.png"
 import { useLoader } from '@react-three/fiber';
 import { TextureLoader } from 'three';
+import { useSpring, animated } from '@react-spring/three'
 
 const Video: React.FC<{
     videoUrl?: string,
     size: [number, number],
     loop?: boolean,
     muted?: boolean,
+    hidden: boolean,
     hideVideo:() => void
 }> = ({
     videoUrl,
     size,
     loop = false,
     muted = false,
+    hidden = false,
     hideVideo
 }) => {
         const [video, setVideo] = useState<HTMLVideoElement|undefined>(undefined)        
@@ -23,6 +26,8 @@ const Video: React.FC<{
         const [playing, setPlaying] = useState(false) 
     
         const visorTextureAlphaInverse = useLoader(TextureLoader, visorAlphaInverse)
+
+        const { scale: videoScale } = useSpring({ scale: !hidden ? 0 : 1 })
 
         useEffect(() => {
             if(videoUrl) {
@@ -60,12 +65,12 @@ const Video: React.FC<{
         return (
             <group position={[0,0,10]}>
                 <Interactive onSelect={() => { updateVideoState() }}>
-                    <mesh onClick={updateVideoState}>
+                    <animated.mesh  onClick={updateVideoState} scale={videoScale}>
                         <planeGeometry args={size} />
                         <meshBasicMaterial side={THREE.FrontSide} alphaMap={visorTextureAlphaInverse} transparent={true}>
                             <videoTexture attach="map" args={[video]} encoding={THREE.sRGBEncoding} format={THREE.RGBFormat} />  
                         </meshBasicMaterial>
-                    </mesh>
+                    </animated.mesh >
                 </Interactive>
             </group>
         )

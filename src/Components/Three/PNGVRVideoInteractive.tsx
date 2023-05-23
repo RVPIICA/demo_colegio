@@ -35,10 +35,7 @@ const PNGVRVideoInteractive:React.FC<{
         
         return (            
                 <group position={position} rotation={[0,rotation,0]}>        
-                    {showVideo ? 
-                        <Video hideVideo={() => setShowVideo(false)} size={videoSize} videoUrl={videoTexture} />
-                        : null
-                    }        
+                    <Video hidden={showVideo} hideVideo={() => setShowVideo(false)} size={videoSize} videoUrl={videoTexture} />    
                     <Interactive onSelect={ () => onIconClick() } onHover={() => setHover(true)} onBlur={() => setHover(false)}>
                         <animated.mesh  scale={pinScale}>
                             <planeGeometry args={[size, size]} />                    
