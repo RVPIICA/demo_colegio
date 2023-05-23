@@ -41,7 +41,6 @@ export const CasaExterior:React.FC<{ onClick: (value:string)=>void, }> = ({ onCl
             <meshBasicMaterial map={ texture } side={THREE.BackSide} />
           </mesh>
           <PNGVRVideoInteractive videoSize={[100,70]} videoTexture={modalDataArray[0].videoUrl} text={modalDataArray[0].title} rotation={1.6} position={[-80, 10, 10]} />
-          <PNGMoveInteractive text="Regresar" onClick={() => onClick('overview_frente')} position={[-10, 20, 150]} rotation={2.9}/>
           <PNGMoveInteractive text="Visitar el Interior" onClick={() => onClick('casa_interior')} position={[-35, 0, -90]} rotation={0.4}/>
         </group>
     )

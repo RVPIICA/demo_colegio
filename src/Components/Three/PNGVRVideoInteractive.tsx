@@ -1,6 +1,6 @@
 import { useLoader } from "@react-three/fiber"
 import { Interactive } from "@react-three/xr"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { TextureLoader } from "three"
 import movie from "../../static/icons/movie.png"
 import mapPinMarkerAlpha from "../../static/icons/map-pin-marker-alpha.png"
@@ -19,6 +19,8 @@ const PNGVRVideoInteractive:React.FC<{
         const pinTextureAlpha = useLoader(TextureLoader, mapPinMarkerAlpha)
         const movieTexture = useLoader(TextureLoader, movie)
 
+        const [video, setVideo] = useState<HTMLVideoElement|undefined>(undefined)
+
         const [hover, setHover] = useState(false)
 
         const { scale: pinScale } = useSpring({ scale: hover ? 1.2 : 1 })
@@ -27,15 +29,28 @@ const PNGVRVideoInteractive:React.FC<{
         const onIconClick = () => {
             if(!showVideo){
                 setShowVideo(true)
+                video!.play()
                 return
             }
 
             setShowVideo(false)
         }
+
+        useEffect(() => {
+            if(videoTexture) {
+                const vid = document.createElement("video");
+                vid.src = videoTexture ? videoTexture : "";
+                vid.crossOrigin = "Anonymous";
+                vid.loop = false;
+                vid.muted = false;
+                vid.autoplay = false
+                setVideo(vid)
+            }
+        }, [videoTexture])
         
         return (            
                 <group position={position} rotation={[0,rotation,0]}>        
-                    <Video hidden={showVideo} hideVideo={() => setShowVideo(false)} size={videoSize} videoUrl={videoTexture} />    
+                    <Video hidden={showVideo} hideVideo={() => setShowVideo(false)} size={videoSize} video={video} />    
                     <Interactive onSelect={ () => onIconClick() } onHover={() => setHover(true)} onBlur={() => setHover(false)}>
                         <animated.mesh  scale={pinScale}>
                             <planeGeometry args={[size, size]} />                    
