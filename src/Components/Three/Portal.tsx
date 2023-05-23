@@ -3,7 +3,7 @@ import { CasaExterior, CasaInterior } from '../../scenes/Casa'
 import { IModalData } from '../../util/interfaces'
 
 
-export const Portal:React.FC<{ setModalData:(modalData:IModalData|undefined) => void }> = ({ setModalData }) => {
+export const Portal:React.FC = () => {
     const [section, setSection] = useState<string>('overview_frente')    
     
     switch (section) {
@@ -11,7 +11,7 @@ export const Portal:React.FC<{ setModalData:(modalData:IModalData|undefined) => 
         case 'casa_interior':
             return <CasaInterior onClick={setSection} />
         default:
-            return <CasaExterior onClick={setSection}  setModalData={setModalData}/> 
+            return <CasaExterior onClick={setSection} /> 
     }
     
 }

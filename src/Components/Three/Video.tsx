@@ -70,10 +70,6 @@ const Video: React.FC<{
                             <videoTexture attach="map" args={[video]} encoding={THREE.sRGBEncoding} format={THREE.RGBFormat} />  
                         </meshBasicMaterial>
                     </mesh>
-                    <mesh onClick={updateVideoState} position={[0, 1, 0.1]}>
-                        <planeGeometry args={[size[0]-1, size[1]-2]} />
-                        <meshBasicMaterial map={visorTexture} side={THREE.DoubleSide} alphaMap={visorTextureAlpha} transparent={true} />
-                    </mesh>
                 </Interactive>
             </group>
         )
