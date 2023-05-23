@@ -7,6 +7,7 @@ import PNGMoveInteractive from '../Components/Three/PNGMoveInteractive'
 import casa_tipica from "../static/videos/casa_tipica.mp4";
 import { IModalData } from '../util/interfaces'
 import PNGVideoInteractive from '../Components/Three/PNGVideoInteractive'
+import PNGVRVideoInteractive from '../Components/Three/PNGVRVideoInteractive'
 
 export const CasaInterior:React.FC<{ onClick: (value:string)=>void }> = ({ onClick }) => {
 
@@ -40,7 +41,7 @@ export const CasaExterior:React.FC<{ onClick: (value:string)=>void, setModalData
             <sphereGeometry args={[500, 60, 40]} />
             <meshBasicMaterial map={ texture } side={THREE.BackSide} />
           </mesh>
-          <PNGVideoInteractive setModalData={() => setModalData(modalDataArray[0])}  text={modalDataArray[0].title} rotation={1.6} position={[-80, 10, 10]} />
+          <PNGVRVideoInteractive videoSize={[100,80]} videoTexture={modalDataArray[0].videoUrl} text={modalDataArray[0].title} rotation={1.6} position={[-80, 10, 10]} />
           <PNGMoveInteractive text="Regresar" onClick={() => onClick('overview_frente')} position={[-10, 20, 150]} rotation={2.9}/>
           <PNGMoveInteractive text="Visitar el Interior" onClick={() => onClick('casa_interior')} position={[-35, 0, -90]} rotation={0.4}/>
         </group>
