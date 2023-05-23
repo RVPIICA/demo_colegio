@@ -5,8 +5,6 @@ import { Preload, OrbitControls } from '@react-three/drei'
 import './App.scss';
 import { Portal } from './Components/Three/Portal';
 import Layout from './Layouts/Layout';
-import InfoModal from './Components/Web/InfoModal';
-import { IModalData } from "./util/interfaces";
 
 
 function App() {
