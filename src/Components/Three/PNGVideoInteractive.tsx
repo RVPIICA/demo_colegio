@@ -7,6 +7,7 @@ import mapPinMarkerAlpha from "../../static/icons/map-pin-marker-alpha.png"
 import { Html, Text } from '@react-three/drei'
 import { useSpring, animated } from '@react-spring/three'
 
+//Punto interactivo que me va a desplegar un video dentro de una escena...
 const PNGVideoInteractive:React.FC<{
     size?: number,
     position: [number, number, number],

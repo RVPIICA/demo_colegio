@@ -7,7 +7,7 @@ import mapPinMarkerAlpha from "../../static/icons/map-pin-marker-alpha.png"
 import { Html, Text } from '@react-three/drei'
 import { useSpring, animated } from '@react-spring/three'
 import Video from "./Video"
-
+//Punto interactivo que me va a desplegar un video dentro de una escena, este es específico para VR...
 const PNGVRVideoInteractive:React.FC<{
     size?: number,
     videoSize: [number, number],
@@ -26,6 +26,7 @@ const PNGVRVideoInteractive:React.FC<{
         const { scale: pinScale } = useSpring({ scale: hover ? 1.2 : 1 })
         const [showVideo, setShowVideo] = useState(false)
 
+        //Al darle click al ícono me abre el video y lo reproduce.
         const onIconClick = () => {
             if(!showVideo){
                 setShowVideo(true)
@@ -35,7 +36,7 @@ const PNGVRVideoInteractive:React.FC<{
 
             setShowVideo(false)
         }
-
+        //Al cargar el componente me crea un video de HTML que luego procedo a ponerlo como textura en un plane.
         useEffect(() => {
             if(videoTexture) {
                 const vid = document.createElement("video");

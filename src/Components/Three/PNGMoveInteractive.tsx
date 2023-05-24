@@ -7,6 +7,8 @@ import mapPinMarkerAlpha from "../../static/icons/map-pin-marker-alpha.png"
 import { Html, Text } from '@react-three/drei'
 import { useSpring, animated } from '@react-spring/three'
 
+
+//Ícono que al darle click me va a ejecutar una acción, usualmente moverme por las distintas escenas.
 const PNGMoveInteractive:React.FC<{ 
     onClick: ()=>void,
     size?: number,
